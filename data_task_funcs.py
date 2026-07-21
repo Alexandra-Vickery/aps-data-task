@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import PercentFormatter
 from matplotlib.patches import Patch
+import warnings
 
 
 
@@ -11,6 +12,7 @@ def process_file(datafile):
     Goes from the raw file to something workable in python environment
     """
     # loading in the file
+    warnings.simplefilter(action='ignore', category=FutureWarning)
     df = pd.read_excel(datafile, sheet_name=0)
     id_cols = ['Age', 'Gender', 'Region', 'Time']
     qu_cols = [c for c in df.columns if c not in id_cols]
