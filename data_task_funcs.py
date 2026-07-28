@@ -231,7 +231,7 @@ def compare_groups_collapsible(
     
     dates = sorted(summary["Time"].unique())
 
-    fig, ax = plt.subplots(figsize=(14, 7))
+    fig, ax = plt.subplots(figsize=(12, 7))
 
     width = 0.8 / len(groups)
     x = np.arange(len(dates))
@@ -279,7 +279,10 @@ def compare_groups_collapsible(
     ax.set_ylabel('Percentage of Responses' if normalise else 'Responses')
     legend1 = ax.legend(handles=response_handles, title='Response Code', loc='upper right')
     group_handles = [Patch(facecolor='lightgrey', hatch=group_hatches[g], label=g) for g in groups]
-    legend2 = ax.legend(handles=group_handles, title='Group', loc='upper left')
+    legend2 = ax.legend(handles=group_handles, title='Group Surveyed', loc='upper left')
+    ax.set_xlabel('Date surveyed')
+    fig.text(0.95, 0.03, 'Source: Department of the Prime Minister and Cabinet 2023', c='dimgrey', fontsize=7, ha='right', va='bottom')
+    fig.suptitle("'Trust in Australian Public Services' Survey Responses")
     ax.add_artist(legend1)
     plt.tight_layout()
     plt.show()
